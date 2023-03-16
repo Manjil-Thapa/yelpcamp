@@ -22,7 +22,7 @@ const MongoStore = require('connect-mongo');
 const { db } = require('./models/user');
 // const dbUrl = process.env.DB_URL;
 // mongoose.connect('mongodb://127.0.0.1:27017/manjilcampgrounds')
-const dbUrl = 'mongodb://127.0.0.1:27017/manjilcampgrounds';
+const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/manjilcampgrounds';
 
 // mongoose setup (method 1)
 // mongoose.connect('mongodb://127.0.0.1:27017/manjilcampgrounds', {
