@@ -23,6 +23,8 @@ const MongoStore = require('connect-mongo');
 // const dbUrl = process.env.DB_URL;
 // mongoose.connect('mongodb://127.0.0.1:27017/manjilcampgrounds')
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/manjilcampgrounds';
+const secret = process.env.SECRET || 'thisIsTheBestSecret';
+
 
 // mongoose setup (method 1)
 // mongoose.connect('mongodb://127.0.0.1:27017/manjilcampgrounds', {
@@ -58,7 +60,7 @@ const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,                                   // hrs*mins*secs
     crypto: {
-        secret: 'thisIsTheBestSecret',
+        secret: secret,
     }
 })
 
@@ -75,7 +77,7 @@ store.on('error', function(e) {
 const sessionConfig = {
     store: store,
     name: 'manjil',                                               // session name can be checked in browers - application, can be changed
-    secret: 'thisIsTheBestSecret',
+    secret: secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
