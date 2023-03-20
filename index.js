@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !== 'production') {     // if we are in development, require the dotenv package in .env file
+if (process.env.NODE_ENV !== 'production') {     // if we are in development, require the dotenv package in .env file
     require('dotenv').config();
 }
 
@@ -23,7 +23,7 @@ const MongoStore = require('connect-mongo');
 // const dbUrl = process.env.DB_URL;
 // mongoose.connect('mongodb://127.0.0.1:27017/manjilcampgrounds')
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/manjilcampgrounds';
-const secret = process.env.SECRET || 'thisIsTheBestSecret';
+
 
 // mongoose setup (method 1)
 // mongoose.connect('mongodb://127.0.0.1:27017/manjilcampgrounds', {
@@ -53,6 +53,19 @@ mongoose.connect(dbUrl)
 
 const app = express();
 
+app.engine('ejs', ejsMate);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.urlencoded({extended: true}));                  // this is to parse the req.body otherwise it will not show its content
+app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(mongoSanitize({
+    replaceWith: '_'
+}));
+
+
+const secret = process.env.SECRET || 'thisIsTheBestSecret';
 
 // sessions (MongoDB atlas)
 const store = MongoStore.create({
@@ -86,17 +99,6 @@ const sessionConfig = {
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }
-
-app.engine('ejs', ejsMate);
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-app.use(express.urlencoded({extended: true}));                  // this is to parse the req.body otherwise it will not show its content
-app.use(methodOverride('_method'));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(mongoSanitize({
-    replaceWith: '_'
-}));
 
 app.use(session(sessionConfig))                                 // default place where sessions are stored is the memory store  but we want to store it in mongo
 app.use(flash());
