@@ -54,7 +54,7 @@ mongoose.connect(dbUrl)
 const app = express();
 
 
-// sessions
+// sessions (MongoDB atlas)
 const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,                                   // hrs*mins*secs
