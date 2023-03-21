@@ -3,8 +3,8 @@ mapboxgl.accessToken = mapToken;                                        // set m
         container: 'cluster-map',
         // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-103.5917, 40.6699],
-        zoom: 3
+        center: [133.281323, -26.439092],
+        zoom: 4
     });
     map.addControl(new mapboxgl.NavigationControl());                   // adding map control on show all campgrounds page
 
