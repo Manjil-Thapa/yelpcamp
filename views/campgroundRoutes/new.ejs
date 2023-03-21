@@ -1,4 +1,5 @@
 <% layout('/layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylessheets/images.css" />
 
 <div class="row">
   <h1 class="text-center">Add a new campground!</h1>
@@ -13,7 +14,7 @@
           enctype="multipart/form-data"
         >
           <div class="mb-3">
-            <label class="form-label" for="title">Campground name</label>
+            <label class="form-label" for="title">Campground title</label>
             <input
               class="form-control"
               type="text"
@@ -33,9 +34,9 @@
             />
           </div>
           <div class="mb-3">
-            <label class="form-label" for="price">Price</label>
+            <label class="form-label" for="price">Price / night</label>
             <div class="input-group">
-              <span class="input-group-text" id="price-label">$</span>
+              <span class="input-group-text" id="price-label">AU $</span>
               <input
                 type="number"
                 class="form-control"
@@ -52,6 +53,7 @@
             <label class="form-label" for="description">Description</label>
             <textarea
               class="form-control"
+              placeholder="Write a short description of the campground"
               type="text"
               name="campground[description]"
               id="description"
@@ -60,28 +62,21 @@
             ></textarea>
             <div class="valid-feedback">Looks good!</div>
           </div>
-          <div class="mb-3">
-            <label for="formFileMultiple" class="form-label"
-              >Add image(s)</label
-            >
+
+          <!-- IMAGE UPLOAD SECTION -->
+
+          <div class="mb-3 custom-file">
+            <label for="image" class="form-label">Add image(s)</label>
             <input
-              class="form-control"
+              class="form-control bs-custom-file-input"
               type="file"
-              id="image"
-              multiple
+              id="imageUpload"
               name="image"
+              multiple
             />
+            <label for="image" class="custom-file-label text-muted"></label>
+            <div class="mt-3" id="formFile"></div>
           </div>
-          <!-- <div class="mb-3">
-        <label class="form-label" for="image">Image Url</label>
-        <input
-          class="form-control"
-          type="text"
-          name="campground[image]"
-          id="image"
-          required
-        />
-      </div> -->
           <div class="mb-3">
             <button class="btn btn-primary">Submit</button>
           </div>
