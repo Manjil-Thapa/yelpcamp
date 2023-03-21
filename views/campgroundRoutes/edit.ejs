@@ -80,7 +80,9 @@
         <label for="image" class="custom-file-label text-muted"></label>
         <div class="mt-3" id="formFile"></div>
       </div>
-      <div class="mb-3">
+
+      <h3 class="mb-3 text-center">Campground image gallery</h3>
+      <div class="mb-3 container">
         <% campground.images.forEach(function(img, i) { %>
         <img src="<%= img.thumbnail %>" class="img-thumbnail" alt="" />
         <div class="form-check-inline">
@@ -90,8 +92,8 @@
             name="deleteImages[]"
             value="<%= img.filename %>"
           />
+          <label for="image-<%= i %>">Delete</label>
         </div>
-        <label for="image-<%= i %>">Delete</label>
         <% }) %>
       </div>
       <div class="mb-3">
