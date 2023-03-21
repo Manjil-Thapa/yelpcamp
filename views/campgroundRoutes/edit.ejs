@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/stylessheets/images.css" />
 
 <div class="row">
-  <h1 class="text-center">Edit Campground</h1>
+  <h1 class="text-center mb-4">Edit Campground</h1>
   <div class="col-md-6 offset-md-3">
     <form
       action="/campgrounds/<%= campground._id %>?_method=put"
@@ -81,8 +81,8 @@
         <div class="mt-3" id="formFile"></div>
       </div>
 
-      <h3 class="mb-3 text-center">Campground image gallery</h3>
-      <div class="mb-3 container">
+      <h3 class="mb-4 text-center">Campground image gallery</h3>
+      <div class="mb-3">
         <% campground.images.forEach(function(img, i) { %>
         <img src="<%= img.thumbnail %>" class="img-thumbnail" alt="" />
         <div class="form-check-inline">
@@ -97,9 +97,9 @@
         <% }) %>
       </div>
       <div class="mb-3">
-        <button class="btn btn-primary">Submit</button>
+        <button class="btn btn-primary me-5">Submit</button>
+        <a href="/campgrounds/<%= campground._id %>">Back</a>
       </div>
     </form>
-    <a href="/campgrounds/<%= campground._id %>">Back</a>
   </div>
 </div>
