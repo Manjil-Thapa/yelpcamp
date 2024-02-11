@@ -4,7 +4,8 @@ YelpCamp is a web application that allows users to explore and review camping gr
 across the globe. Users are able to register, log in, submit campground reviews and
 even add images to make their submissions more appealing.
 
-<a href='https://yelpcamp-zil.onrender.com/'>Live Version</a>
+<a href='https://yelpcamp-zil.onrender.com/' target='_blank'>Live Version</a> (Please
+note\* Live ver. takes about a minute to load because it is on a free plan)
 
 ## Features
 
